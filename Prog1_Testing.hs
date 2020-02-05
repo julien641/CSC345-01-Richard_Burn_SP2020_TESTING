@@ -3,14 +3,25 @@ Assigment: Homework 1
 created By: Julien Lanoue
 Contribution:
 Date:2/3/2020
-Last update:2/3/2020 at 5:00Pm
-Version: 1.0.0.0
+Last update:2/4/2020 at 5:00Pm
+Version: 1.0.0.1
+Log:
+2/4/2020
+  Added spacing and removed extra lines
+  Cleaned Code
+TODO:
+Comment
+Clean code
+
 ###########################################--}
 module Prog1_test where
 import Control.Exception
 import Prog1
+
+
+
+--Function defining
 catchAny :: IO a -> (SomeException -> IO a) -> IO a
-catchAny = Control.Exception.catch
 
 test_isPositive :: Integer -> Bool
 test_dividesEvenlyByFive :: Integer ->Bool
@@ -22,7 +33,20 @@ test_letterGrade ::Int -> Bool
 test_averageThree :: Int ->Bool
 test_howManyAboveAverage ::Int->Bool
 test_howManyWithinThreshold :: Int->Bool
+stringspacing::String -> Int->String
+main :: IO ()
+--end of function defining
 
+
+
+--global variables
+charcount =35
+
+--end of global variables
+
+--exception calling
+catchAny = Control.Exception.catch
+--
 test_isPositive x =
  if (isPositive (-1) == False)  &&
        (isPositive 1  == True) &&
@@ -32,22 +56,30 @@ test_isPositive x =
   else 1==1
 
 test_dividesEvenlyByFive x =
-  if (dividesEvenlyByFive 10 == True)&&
-     dividesEvenlyByFive 4  == False&&
-   dividesEvenlyByFive 1  == False&&
-   dividesEvenlyByFive (-10) == True&&
-   dividesEvenlyByFive 5 ==True
+  if dividesEvenlyByFive 10    == True  &&
+     dividesEvenlyByFive 5     == True  &&
+     dividesEvenlyByFive 4     == False &&
+     dividesEvenlyByFive 1     == False &&
+     dividesEvenlyByFive (-10) == True  &&
+     dividesEvenlyByFive 5     == True
        then True 
             else False
 
 
 test_middle x=
-  if middle 1 2 3==2 && middle 4 9 2 ==4 && middle 96 74 100 ==96 && middle 100 40 50 == 50 
-      && middle (-100) (-50) 10 ==(-50)
+  if middle 1 2 3             == 2 && 
+     middle 4 9 2             == 4 &&
+     middle 96 74 100         == 96 &&
+      middle 100 40 50        == 50 &&
+       middle (-100) (-50) 10 ==(-50)
     then  True
      else False
 
-test_nor x =if nor False False ==True && nor False True ==False && nor True False == False && nor True True ==False
+test_nor x =
+  if nor False False ==True &&
+     nor False True ==False &&
+     nor True False == False &&
+     nor True True ==False
     then  True
      else False
 
@@ -100,55 +132,58 @@ test_howManyWithinThreshold x =
           else False
 
 
+stringspacing str charcount 
+  |length str <= charcount = stringspacing (str ++ " ") charcount
+  |length str >=charcount = str
 
-main :: IO ()
+
 main = do 
-putStrLn "1.Testing isPositive"
+putStr (stringspacing "1.Testing isPositive: " charcount  )
 if test_isPositive 1 == True
   then putStrLn "does work"
     else putStrLn "does not work"
 
-putStrLn "2.dividesEvenlyByFive"
+putStr (stringspacing "2.dividesEvenlyByFive: " charcount  )
 if test_dividesEvenlyByFive 1==True
   then putStrLn "does work"
    else putStrLn "does not work"
 
-putStrLn "3.test_middle"
+putStr (stringspacing "3.test_middle: " charcount )
 if test_middle 1 ==True
   then putStrLn "does work"
     else putStrLn "does not work"
 
-putStrLn "4.test_nor"
+putStr (stringspacing "4.test_nor: " charcount  )
 if test_nor 2 ==True
   then putStrLn "does work"
     else putStrLn "does not work"
 
-putStrLn "5.test_triangleArea"
+putStr (stringspacing "5.test_triangleArea: " charcount )
 if test_triangleArea 2==True
   then putStrLn "does work"
     else putStrLn "does not work"
 
-putStrLn "6.test_ceilingDecimal"
+putStr (stringspacing "6.test_ceilingDecimal: " charcount )
 if test_ceilingDecimal 3  ==True
   then putStrLn "does work"
     else putStrLn "does not work"
 
-putStrLn "7.test_letterGrade"
+putStr (stringspacing "7.test_letterGrade: " charcount )
 if test_letterGrade 2==True
   then putStrLn "does work"
     else putStrLn "does not work"
 
-putStrLn "8.test_averageThree"
+putStr (stringspacing "8.test_averageThree: " charcount  )
 if test_averageThree 3 ==True
   then putStrLn "does work"
     else putStrLn "does not work"
 
-putStrLn "9.test_howManyAboveAverage"
+putStr (stringspacing "9.test_howManyAboveAverage: " charcount )
 if test_howManyAboveAverage  23 ==True
   then putStrLn "does work"
     else putStrLn "does not work"
 
-putStrLn "10.test_howManyWithinThreshold"
+putStr (stringspacing "10.test_howManyWithinThreshold: " charcount  )
 if test_howManyWithinThreshold 2 ==True
   then putStrLn "does work"
     else putStrLn "does not work"
